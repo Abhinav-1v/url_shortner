@@ -1,6 +1,7 @@
+const dotenv=require("dotenv").config();
 const jwt=require('jsonwebtoken');
 
-const secretkey='abhinav@10';
+const secretkey='process.env.secretkey';
 
 function setuser(user){
     

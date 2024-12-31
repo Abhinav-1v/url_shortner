@@ -5,6 +5,9 @@ const { v4: uuidv4 } = require('uuid');
 const {setuser,getuser,sessionidchecker}=require('./services/auth');
 const cookieparser=require('cookie-parser');
 
+const dotenv=require("dotenv");
+const mongourl=process.env.mongourl;
+
 const app=express();
 const PORT=5001;
 
@@ -13,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.set("view engine","ejs");
 
-mongoose.connect('mongodb://127.0.0.1:27017/short-url')
+mongoose.connect(mongourl)
 .then(console.log("MongoDB connected"));
 
 const urlschema=new mongoose.Schema({
